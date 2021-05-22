@@ -21,15 +21,14 @@ This document contains the following details:
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
-Load balancing ensures that the application will be highly reliable, in addition to restricting traffic to the network.
-- Load balancers protect the accessibility of the DVWA instance by limiting the traffic that can go to any one server at a time. The jump box allows access into the web servers that are running the application from a separate security zone to manage the devices that the servers are running from. 
+Load balancing ensures that the application will be highly reliable, in addition to restricting access to the network.
+- Load balancers protect the accessibility of the DVWA instance by limiting the traffic that can go to any one server at a time. - - The jump box allows access into the web servers that are running the application from a separate security zone to manage the devices that the servers are running from. 
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the applications and system logs.
 - Filebeat records logs from specified locations on the server.
 - Metricbeat records the metrics of the operating system that the servers run on to be monitored over time.
 
 The configuration details of each machine may be found below.
-_Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
 | Name     | Function | IP Address | Operating System |
 |----------|----------|------------|------------------|
@@ -54,7 +53,7 @@ A summary of the access policies in place can be found in the table below.
 |---------------|---------------------|----------------------|
 | Jump Box      | No                  | 24.30.114.63         |
 | Load Balancer | Yes                 | Any                  |
-| ELK VM        | No                  | 10.1.0.4             |
+| ELK VM        | No                  | 24.30.114.63         |
 
 ### Elk Configuration
 
@@ -73,16 +72,17 @@ The following screenshot displays the result of running `docker ps` after succes
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- 10.1.0.5
-- 10.1.0.8
-- 10.1.0.7
+- 10.1.0.5 (Web1)
+- 10.1.0.8 (Web2)
+- 10.1.0.7 (Web3)
 
 We have installed the following Beats on these machines:
 - Filebeat
 - Metricbeat
 
 These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+Filebeat looks for log data in any location that is specified by the user. For example, syslogs track when systems start on the machine.
+Metricbeat tracks the metrics for traffic that interacts with the web servers. For example, Metricbeat can tell how much and from what country web traffic is coming from.
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
@@ -91,5 +91,3 @@ SSH into the control node and follow the steps below:
 - Copy the config file to the ansible container on the ELK machine.
 - Update the hosts file in the ansible container to include the private IP's of the Web VM's under the "[webserver](Images/hosts_file_example.PNG)" heading to indicate the machines that should recieve the files and settings in the Filbeat or Metricbeat playbooks. Under the "[ELK]" heading in the same hosts file, add the private IP of the ELK machine to specify that this machine recieves the ELK settings and files. Make sure to include "ansible_python_interpreter=/usr/bin/python3" after each of the private IP's so that Docker will run using python3 instead of python2. 
 - Run the playbook, and navigate to the public IP of the ELK machine using port 5601 (ie 40.84.135.62:5601) in a browswer to check that the installation worked as expected.
-
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
