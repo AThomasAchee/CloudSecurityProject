@@ -89,12 +89,7 @@ In order to use the playbook, you will need to have an Ansible control node alre
 
 SSH into the control node and follow the steps below:
 - Copy the config file to the ansible container on the ELK machine.
-- Update the hosts file to include the private IP's of the Web VM's under the "[webserver]" heading to indicate that those machines should recieve the files in the Filbeat playbook. Under the "[ELK]" heading in the hosts file, add the private IP of the ELK machine to specify that this machine recieves the ELK settings. Make sure to include "ansible_python_interpreter=/usr/bin/python3" after each of the private IP's so that Docker will run using python3 instead of python2. 
+- Update the hosts file in the ansible container to include the private IP's of the Web VM's under the "[webserver]" heading to indicate the machines that should recieve the files and settings in the Filbeat or Metricbeat playbooks. Under the "[ELK]" heading in the same hosts file, add the private IP of the ELK machine to specify that this machine recieves the ELK settings and files. Make sure to include "ansible_python_interpreter=/usr/bin/python3" after each of the private IP's so that Docker will run using python3 instead of python2. 
 - Run the playbook, and navigate to the public IP of the ELK machine using port 5601 (ie 40.84.135.62:5601) in a browswer to check that the installation worked as expected.
-
-_TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- _Which URL do you navigate to in order to check that the ELK server is running?
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
