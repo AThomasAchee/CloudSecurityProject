@@ -50,21 +50,23 @@ Machines within the network can only be accessed by the Jump Box.
 
 A summary of the access policies in place can be found in the table below.
 
-| Name     | Publicly Accessible | Allowed IP Addresses |
-|----------|---------------------|----------------------|
-| Jump Box | No                  | 10.0.0.1 10.0.0.2    |
-| Load Balancer         |                     |                      |
-| ELK VM   |                     |                      |
+| Name          | Publicly Accessible | Allowed IP Addresses |
+|---------------|---------------------|----------------------|
+| Jump Box      | No                  | 24.30.114.63         |
+| Load Balancer | Yes                 | Any                  |
+| ELK VM        | No                  | 10.1.0.4             |
 
 ### Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- _TODO: What is the main advantage of automating configuration with Ansible?_
+Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because it allows new machines to be added in and configured easily by adding in the new private IP of the machine to the "hosts" file and running the playbook. 
 
 The playbook implements the following tasks:
 - _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
+- Install docker.io: This task installs the docker package for Linux based OS's onto the web server VM's.
+- Install python3-pip: This installs python3 to the web server machines so they won't run the default python2.
+- Install Docker Module: This installs the Docker Container onto the web server machines using python3. 
+- Increase VM Memory: 
+- Download and Launch Docker Container
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
