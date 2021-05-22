@@ -73,10 +73,13 @@ The following screenshot displays the result of running `docker ps` after succes
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- _TODO: List the IP addresses of the machines you are monitoring_
+- 10.1.0.5
+- 10.1.0.8
+- 10.1.0.7
 
 We have installed the following Beats on these machines:
-- _TODO: Specify which Beats you successfully installed_
+- Filebeat
+- Metricbeat
 
 These Beats allow us to collect the following information from each machine:
 - _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
@@ -85,9 +88,9 @@ These Beats allow us to collect the following information from each machine:
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the _____ file to _____.
-- Update the _____ file to include...
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
+- Copy the config file to the ansible container on the ELK machine.
+- Update the hosts file to include the private IP's of the Web VM's under the "[webserver]" heading to indicate that those machines should recieve the files in the Filbeat playbook. Under the "[ELK]" heading in the hosts file, add the private IP of the ELK machine to specify that this machine recieves the ELK settings. Make sure to include "ansible_python_interpreter=/usr/bin/python3" after each of the private IP's so that Docker will run using python3 instead of python2. 
+- Run the playbook, and navigate to the public IP of the ELK machine using port 5601 (ie 40.84.135.62:5601) in a browswer to check that the installation worked as expected.
 
 _TODO: Answer the following questions to fill in the blanks:_
 - _Which file is the playbook? Where do you copy it?_
