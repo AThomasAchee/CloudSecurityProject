@@ -2,11 +2,11 @@
 
 The files in this repository were used to configure the network depicted below.
 
-![TODO: Update the path with the name of your diagram](Images/OffSecNetTopology.PNG)
+![OffSec Topology](Images/OffSecNetTopology.PNG)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to recreate the entire deployment pictured above. Alternatively, select portions of the playbook file may be used to install only certain pieces of it, such as Filebeat.
 
-  - ![Filebeat playbook file](Ansible/filebeat-playbook.yml)
+  - [Filebeat playbook file](Ansible/filebeat-playbook.yml)
 
 This document contains the following details:
 - Description of the Topology
@@ -69,7 +69,7 @@ The playbook implements the following tasks:
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-![TODO: Update the path with the name of your screenshot of docker ps output](Images/yaml_run_screenshot.PNG)
+![Docker ps output example](Images/yaml_run_screenshot.PNG)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -89,7 +89,7 @@ In order to use the playbook, you will need to have an Ansible control node alre
 
 SSH into the control node and follow the steps below:
 - Copy the config file to the ansible container on the ELK machine.
-- Update the hosts file in the ansible container to include the private IP's of the Web VM's under the "[webserver]" heading to indicate the machines that should recieve the files and settings in the Filbeat or Metricbeat playbooks. Under the "[ELK]" heading in the same hosts file, add the private IP of the ELK machine to specify that this machine recieves the ELK settings and files. Make sure to include "ansible_python_interpreter=/usr/bin/python3" after each of the private IP's so that Docker will run using python3 instead of python2. 
+- Update the hosts file in the ansible container to include the private IP's of the Web VM's under the "[webserver](Images/hosts_file_example.PNG)" heading to indicate the machines that should recieve the files and settings in the Filbeat or Metricbeat playbooks. Under the "[ELK]" heading in the same hosts file, add the private IP of the ELK machine to specify that this machine recieves the ELK settings and files. Make sure to include "ansible_python_interpreter=/usr/bin/python3" after each of the private IP's so that Docker will run using python3 instead of python2. 
 - Run the playbook, and navigate to the public IP of the ELK machine using port 5601 (ie 40.84.135.62:5601) in a browswer to check that the installation worked as expected.
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
