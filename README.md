@@ -61,16 +61,15 @@ A summary of the access policies in place can be found in the table below.
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because it allows new machines to be added in and configured easily by adding in the new private IP of the machine to the "hosts" file and running the playbook. 
 
 The playbook implements the following tasks:
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- Install docker.io: This task installs the docker package for Linux based OS's onto the web server VM's.
-- Install python3-pip: This installs python3 to the web server machines so they won't run the default python2.
-- Install Docker Module: This installs the Docker Container onto the web server machines using python3. 
-- Increase VM Memory: 
-- Download and Launch Docker Container
+- Install docker.io: This task installs the docker package for Linux based OS's onto the ELK server VM.
+- Install python3-pip: This installs python3 to the ELK server machine so it won't run the default python2.
+- Install Docker Module: This installs the Docker Module onto the ELK machine using python3. 
+- Increase VM Memory: Since Docker needs more RAM to run properly, this task increases the amount of memory that the ELK machine can use, given that the machine has enough RAM to support it. 
+- Download and Launch Docker Container: This downloads and launches the Docker Container onto the ELK server using the sebp/elk:761 image. 
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-![TODO: Update the path with the name of your screenshot of docker ps output](Images/docker_ps_output.png)
+![TODO: Update the path with the name of your screenshot of docker ps output](Images/yaml_run_screenshot.png)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
